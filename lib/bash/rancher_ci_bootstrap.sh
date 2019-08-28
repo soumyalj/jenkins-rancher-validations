@@ -161,7 +161,9 @@ docker_lvm_thinpool_config_native() {
     docker_version="$(ec2_get_tag rancher.docker.version)" || exit $?
     rhel_selinux="$(ec2_get_tag rancher.docker.rhel.selinux)" || exit $?
     sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
-    docker_version_match=$(sudo yum --showduplicates list docker | grep ${docker_version} | sort -rn | head -n1 | awk -F' ' '{print $2}' | cut -d":" -f2)
+    # docker_version_match=$(sudo yum --showduplicates list docker | grep ${docker_version} | sort -rn | head -n1 | awk -F' ' '{print $2}' | cut -d":" -f2)
+    docker_version_match=$(sudo yum --showduplicates list docker |tail -n1 | awk -F' ' '{print $2}' | cut -d":" -f2)
+    sudo echo $docker_version_match
     sudo yum install -y docker-$docker_version_match
     sudo systemctl start docker
 
