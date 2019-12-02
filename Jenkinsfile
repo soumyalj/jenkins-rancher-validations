@@ -188,7 +188,7 @@ if ( true == via_webhook() && (!(rancher_version ==~ rancher_version_regex)) ) {
 	  }
 	}
 
-	stage ('deprovision Rancher Agents') {
+	 stage ('deprovision Rancher Agents') {
 	  sh "docker run --rm  " +
 	    "-v jenkins_home:/var/jenkins_home " +
 	    "--env-file .env " +
@@ -204,12 +204,12 @@ if ( true == via_webhook() && (!(rancher_version ==~ rancher_version_regex)) ) {
 
 	if ( "false" == "${PIPELINE_DEPROVISION_STOP}" ) {
 
-	  // stage ('provision AWS') {
-	  //   sh "docker run --rm  " +
-	  //     "-v jenkins_home:/var/jenkins_home " +
-	  //     "--env-file .env " +
-	  //     "rancherlabs/ci-validation-tests /bin/bash -c \'cd \"\$(pwd)\" && invoke aws.provision\'"
-	  // }
+	   stage ('provision AWS') {
+	     sh "docker run --rm  " +
+	       "-v jenkins_home:/var/jenkins_home " +
+	       "--env-file .env " +
+	       "rancherlabs/ci-validation-tests /bin/bash -c \'cd \"\$(pwd)\" && invoke aws.provision\'"
+	   }
 
 	  stage('provision rancher/server') {
 	    sh "docker run --rm  " +
@@ -262,10 +262,10 @@ if ( true == via_webhook() && (!(rancher_version ==~ rancher_version_regex)) ) {
 	    }
 
 	    stage ('deprovision Rancher Agents') {
-	      sh "docker run --rm  " +
-		"-v jenkins_home:/var/jenkins_home " +
-		"--env-file .env " +
-    "rancherlabs/ci-validation-tests /bin/bash -c \'cd \"\$(pwd)\" && invoke rancher_agents.deprovision\'"
+	     sh "docker run --rm  " +
+		 "-v jenkins_home:/var/jenkins_home " +
+		 "--env-file .env " +
+        "rancherlabs/ci-validation-tests /bin/bash -c \'cd \"\$(pwd)\" && invoke rancher_agents.deprovision\'"
 	    }
 
 	    stage ('deprovision rancher/server') {
