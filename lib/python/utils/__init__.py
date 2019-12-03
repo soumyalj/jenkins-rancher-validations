@@ -259,6 +259,8 @@ def os_to_settings(os):
                                 "ssh_username": 'ec2-user'},
                    'rhel-7.7': {"ami": 'ami-03cfe750d5ea278f5',
                                 "ssh_username": 'ec2-user'},
+                   'rhel-8': {"ami": 'ami-0520e698dd500b1d1',
+                              "ssh_username": 'ec2-user'},
                    'rancheros-v1.4.2': {"ami": 'ami-02529740975197e75',
                                         "ssh_username": 'rancher'},
                    'rancheros-v1.5.0': {"ami": 'ami-0be73aeb7d3076a36',

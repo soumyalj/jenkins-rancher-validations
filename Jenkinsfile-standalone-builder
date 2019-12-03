@@ -86,7 +86,7 @@ try {
         sh "docker run --rm  " +
           "-v jenkins_home:/var/jenkins_home " +
           "--env-file .env " +
-    "rancherlabs/ci-validation-tests /bin/bash -c \'cd \"\$(pwd)\" && invoke rancher_agents.deprovision\'"
+          "rancherlabs/ci-validation-tests /bin/bash -c \'cd \"\$(pwd)\" && invoke rancher_agents.deprovision\'"
       }
 
       if ( "false" == "${PIPELINE_DEPROVISION_STOP}" ) {

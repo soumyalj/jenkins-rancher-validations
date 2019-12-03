@@ -257,7 +257,8 @@ system_prep() {
 	    sudo yum remove -y epel-release
 	    sudo yum install -y wget
             sudo wget -O /etc/yum.repos.d/epel.repo https://mirror.openshift.com/mirror/epel/epel7.repo
-	    sudo yum install -y deltarpm
+	    #sudo yum install -y deltarpm
+	    sudo yum install -y drpm
 	    # sudo yum upgrade -y
 
 	    # if this worked we could have inspec. :\
@@ -266,8 +267,9 @@ system_prep() {
 	    #	    sudo yum groupinstall -y "Development Tools"
 	    #	    sudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
 
-	    sudo yum install  -y jq python-pip htop  mosh
-	    sudo pip install awscli
+	    #sudo yum install  -y jq python-pip htop  mosh
+	    sudo yum install  -y jq platform-python-pip pip3
+	    sudo pip3 install awscli
 	    sudo wget -O /usr/local/bin/ec2metadata http://s3.amazonaws.com/ec2metadata/ec2-metadata
 	    sudo chmod +x /usr/local/bin/ec2metadata
 	    ;;

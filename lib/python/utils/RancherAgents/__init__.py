@@ -296,6 +296,8 @@ class RancherAgents(object):
                 try:
                         for agent in range(0, agent_count):
                                 agent_name = self.__agent_name_prefix() + str(agent)
+                                print("Hello Soumya *************")
+                                print(agent_name)
                                 ec2_node_terminate(agent_name, region=region)
                                 # nuke_aws_keypair(agent_name)
 
